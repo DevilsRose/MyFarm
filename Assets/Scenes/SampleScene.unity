@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8898edc2caeb44aa36deb756655a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageToGive: 5
 --- !u!1 &860241344
 GameObject:
   m_ObjectHideFlags: 0
@@ -18476,6 +18477,7 @@ GameObject:
   - component: {fileID: 2112696800}
   - component: {fileID: 2112696804}
   - component: {fileID: 2112696805}
+  - component: {fileID: 2112696806}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -18617,3 +18619,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.18}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &2112696806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112696799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b954e1633b9a1408d0881544256839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 50
+  maxHealth: 50
