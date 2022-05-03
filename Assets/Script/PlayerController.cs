@@ -7,7 +7,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private Animator myAnim;
     [SerializeField]
-    public float speed;   // Start is called before the first frame update
+    public float speed;
+    
+    private float attackTime = .25f;
+    private float attackCounter= .25f;
+    private bool isAttacking;
+       // Start is called before the first frame update
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
@@ -26,6 +31,24 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
             myAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
+        }
+
+        if (isAttacking)
+        {
+            myRB.velocity = Vector2.zero;
+            attackTime -= Time.deltaTime;
+            if (attackCounter<= 0)
+            {
+                myAnim.SetBool("isAttacking", false);
+                isAttacking = false; 
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            attackCounter = attackTime;
+            myAnim.SetBool("isAttacking", true);
+            isAttacking = true;
         }
 
     }
