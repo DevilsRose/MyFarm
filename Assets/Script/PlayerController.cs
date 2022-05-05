@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Joystick joystick;
+
     private Rigidbody2D myRB;
     private Animator myAnim;
     [SerializeField]
@@ -22,15 +24,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed * Time.deltaTime;
+
+        myRB.velocity = new Vector2(joystick.Horizontal, joystick.Vertical).normalized * speed * Time.deltaTime;
 
         myAnim.SetFloat("moveX", myRB.velocity.x);
         myAnim.SetFloat("moveY", myRB.velocity.y);
 
-        if(Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        if(joystick.Horizontal == 1 || joystick.Horizontal == -1 || joystick.Vertical == 1 || joystick.Vertical == -1)
         {
-            myAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
-            myAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
+            myAnim.SetFloat("lastMoveX", joystick.Horizontal);
+            myAnim.SetFloat("lastMoveY", joystick.Vertical);
         }
 
         if (isAttacking)
